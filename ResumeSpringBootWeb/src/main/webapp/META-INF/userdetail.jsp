@@ -1,6 +1,4 @@
 <%@ page import="com.company.entity.User" %>
-<%@ page import="com.company.dao.inter.UserDAOinter" %>
-<%@ page import="com.company.main.Context" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +7,7 @@
 </head>
 <body>
 <%
-  User user= (User) request.getAttribute("usr");
+  User user= (User) request.getAttribute("list");
 %>
 <div>
   <form action="userdetail" method="post">
