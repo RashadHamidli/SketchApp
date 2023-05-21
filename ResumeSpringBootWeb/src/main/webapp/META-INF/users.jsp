@@ -2,6 +2,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="forum" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -80,7 +83,6 @@
                     <input class="form-control" type="date" , id="birthdate" , name="birthdate" , value="">
                     <input class="btn btn-primary" type="submit" , name="search" , value="Search"
                            style="margin: 2% 0% 2% 0%">
-
                 </div>
             </div>
         </div>

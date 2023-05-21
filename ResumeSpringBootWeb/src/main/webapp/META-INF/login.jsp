@@ -8,11 +8,8 @@
 </head>
 <body class="login_background">
 
-<form action="login" method="POST">
+<form action="/login" method="POST">
     <div class="col-4 container login_fix_">
-        <center>
-            <h1>Login:</h1>
-        </center>
         <div class="form-group">
             <label>Email address</label>
             <input type="email" class="form-control" placeholder="email@example.com" name="email">
@@ -25,5 +22,35 @@
     </div>
 </form>
 
-</body>
-</html>
+<%--</body>--%>
+<%--</html>--%>
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
+<%--<!DOCTYPE html>--%>
+<%--<html>--%>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>Login</title>--%>
+<%--    <!-- Bootstrap CSS dosyasını projenize dahil edin -->--%>
+<%--    <link rel="stylesheet" href="path/to/bootstrap.css">--%>
+<%--    <!-- Eğer Bootstrap'in jQuery'ye bağımlı olan bileşenlerini kullanacaksanız, jQuery dosyasını da dahil edin -->--%>
+<%--    <script src="path/to/jquery.js"></script>--%>
+<%--    <!-- Bootstrap JavaScript dosyasını projenize dahil edin -->--%>
+<%--    <script src="path/to/bootstrap.js"></script>--%>
+<%--</head>--%>
+<%--<body>--%>
+<%--<div class="container">--%>
+<%--    <h1>Login</h1>--%>
+<%--    <form action="/login" method="post">--%>
+<%--        <div class="form-group">--%>
+<%--            <label for="username">Username:</label>--%>
+<%--            <input type="text" class="form-control" id="username" name="username" required>--%>
+<%--        </div>--%>
+<%--        <div class="form-group">--%>
+<%--            <label for="password">Password:</label>--%>
+<%--            <input type="password" class="form-control" id="password" name="password" required>--%>
+<%--        </div>--%>
+<%--        <button type="submit" class="btn btn-primary">Login</button>--%>
+<%--    </form>--%>
+<%--</div>--%>
+<%--</body>--%>
+<%--</html>--%>

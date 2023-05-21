@@ -1,13 +1,14 @@
-package com.company;
+package com.company.controller;
+
 
 import com.company.entity.User;
+import com.company.form.UserForm;
 import com.company.service.inter.UserServiceinter;
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
@@ -64,8 +65,22 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/usersm")
-    public ModelAndView index() {
+    public ModelAndView indexM(
+            @Valid
+            @ModelAttribute("user") UserForm u,
+            BindingResult bindingResult) {
         ModelAndView mv = new ModelAndView("users");
+        if (bindingResult.hasErrors()) {
+            return mv;
+        }
+        List<User> list = userService.getAll(u.getName(), u.getSurname(), u.getEmail(), u.getPhone(), u.getAddress(), u.getBirthdate());
+
+        mv.addObject("list", list);
         return mv;
+    }
+
+    @ModelAttribute("user")
+    public UserForm getEmptyUserForm() {
+        return new UserForm(null, null, null, null, null, null);
     }
 }
