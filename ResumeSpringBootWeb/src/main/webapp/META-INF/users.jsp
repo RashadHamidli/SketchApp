@@ -67,6 +67,7 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-4">
+                    <input type="hidden" id="id" name="id" value="" >
                     <label for="name">name</label>
                     <input class="form-control" type="text" , id="name" , name="name" , value="">
                     <label for="surname">surname</label>
