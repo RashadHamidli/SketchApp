@@ -44,15 +44,15 @@ public class WebSecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
     }
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().authenticated()
-                .and().formLogin()
-                .loginPage("/login").permitAll();
-        return http.build();
-    }
-
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((authz) -> authz
+//                        .anyRequest().authenticated()
+//                )
+//                .httpBasic(withDefaults());
+//        return http.build();
+//    }
     @Bean
     public PasswordEncoder passwordEncoder() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
