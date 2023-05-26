@@ -6,9 +6,12 @@ import com.company.entity.User;
 import java.util.Date;
 import java.util.List;
 
+
 public interface UserServiceinter {
     public List<User> getAll(String name, String surname, String email, String phone, String address, Date birthdate);
+
     public User findByEmail(String email);
+    public boolean authenticate(String username, String password);
 
     public User getById(int id);
 

@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserServiceinter {
     }
 
     @Override
+    public boolean authenticate(String username, String password) {
+        return userDao.authenticate(username, password);
+    }
+
+    @Override
     public User getById(int id) {
         return userDao.getById(id);
     }

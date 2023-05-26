@@ -72,6 +72,18 @@ public class UserDAOImpl implements UserDAOInter {
         return null;
     }
 
+    public boolean authenticate(String username, String password) {
+        // Kullanıcı kimlik doğrulaması işlemini gerçekleştirin.
+        // Burada kullanıcı adı ve şifrenin doğruluğunu kontrol eden iş mantığınızı uygulayın.
+        // Örnek olarak, hardcoded kullanıcı adı ve şifre ile karşılaştırma yapabilirsiniz.
+
+        if (username.equals("admin") && password.equals("admin123")) {
+            return true; // Kullanıcı kimlik doğrulaması başarılı
+        } else {
+            return false; // Kullanıcı kimlik doğrulaması başarısız
+        }
+    }
+
     @Override
     public User getById(int id) {
         User u = em.find(User.class, id);
