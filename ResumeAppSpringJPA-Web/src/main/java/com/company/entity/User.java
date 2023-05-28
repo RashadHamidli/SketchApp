@@ -149,6 +149,7 @@ public class User {
         return id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(phone, user.phone) && Objects.equals(address, user.address) && Objects.equals(profileDescription, user.profileDescription) && Objects.equals(birthdate, user.birthdate) && Objects.equals(nationalityId, user.nationalityId) && Objects.equals(birthplaceId, user.birthplaceId) && Objects.equals(password, user.password);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, surname, email, phone, address, profileDescription, birthdate, nationalityId, birthplaceId, password);

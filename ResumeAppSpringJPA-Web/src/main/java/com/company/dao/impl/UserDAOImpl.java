@@ -4,6 +4,7 @@ package com.company.dao.impl;
 import com.company.dao.inter.UserDAOInter;
 import com.company.entity.User;
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -77,7 +78,7 @@ public class UserDAOImpl implements UserDAOInter {
         // Burada kullanıcı adı ve şifrenin doğruluğunu kontrol eden iş mantığınızı uygulayın.
         // Örnek olarak, hardcoded kullanıcı adı ve şifre ile karşılaştırma yapabilirsiniz.
 
-        if (username.equals("admin") && password.equals("admin123")) {
+        if (username.equals("rashad@gmail.com") && password.equals("12345")) {
             return true; // Kullanıcı kimlik doğrulaması başarılı
         } else {
             return false; // Kullanıcı kimlik doğrulaması başarısız
@@ -103,8 +104,11 @@ public class UserDAOImpl implements UserDAOInter {
         return true;
     }
 
+    private static BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
+
     @Override
     public boolean addUser(User u) {
+        u.setPassword(crypt.encode(u.getPassword()));
         em.persist(u);
         return true;
     }
