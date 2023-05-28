@@ -2,18 +2,25 @@ package com.company.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.Objects;
+
 @Entity
 public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 255)
     private String name;
     @Basic
-    @Column(name = "nationality")
+    @Column(name = "nationality", nullable = true, length = 255)
     private String nationality;
+    @OneToMany(mappedBy = "countryByNationalityId")
+    private Collection<User> usersById;
+    @OneToMany(mappedBy = "countryByBirthplaceId")
+    private Collection<User> usersById_0;
 
     public int getId() {
         return id;
@@ -43,21 +50,28 @@ public class Country {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Country country = (Country) o;
-
-        if (id != country.id) return false;
-        if (name != null ? !name.equals(country.name) : country.name != null) return false;
-        if (nationality != null ? !nationality.equals(country.nationality) : country.nationality != null) return false;
-
-        return true;
+        return id == country.id && Objects.equals(name, country.name) && Objects.equals(nationality, country.nationality);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (nationality != null ? nationality.hashCode() : 0);
-        return result;
+        return Objects.hash(id, name, nationality);
+    }
+
+    public Collection<User> getUsersById() {
+        return usersById;
+    }
+
+    public void setUsersById(Collection<User> usersById) {
+        this.usersById = usersById;
+    }
+
+    public Collection<User> getUsersById_0() {
+        return usersById_0;
+    }
+
+    public void setUsersById_0(Collection<User> usersById_0) {
+        this.usersById_0 = usersById_0;
     }
 }

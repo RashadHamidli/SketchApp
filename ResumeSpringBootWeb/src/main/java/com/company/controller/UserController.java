@@ -6,6 +6,7 @@ import com.company.form.UserForm;
 import com.company.service.inter.UserServiceinter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +43,9 @@ public class UserController {
 //        request.setAttribute("list", list);
 //        return "users";
 //    }
-    @RequestMapping(method = RequestMethod.GET, value = "/users")
-    public ModelAndView index(
+    @GetMapping("/users")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
+    public ModelAndView  index(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "surname", required = false) String surname,
             @RequestParam(value = "email", required = false) String email,
@@ -58,13 +60,14 @@ public class UserController {
             birthdate = new java.sql.Date(bd.getTime());
         }
 
-        List<User> list = userService.getAll(name, surname, email, phone, address, birthdate);
+        List<User> list = userService.getAll(name, surname, email, phone, address, null);
         ModelAndView mv = new ModelAndView("users");
         mv.addObject("list", list);
         return mv;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/usersm")
+    @GetMapping("/usersm")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ModelAndView indexM(
             @Valid
             @ModelAttribute("user") UserForm u,

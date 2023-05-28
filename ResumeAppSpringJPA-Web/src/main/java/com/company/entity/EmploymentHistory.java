@@ -3,29 +3,33 @@ package com.company.entity;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "employment_history", schema = "resumesecond", catalog = "")
 public class EmploymentHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "header")
+    @Column(name = "header", nullable = true, length = 255)
     private String header;
     @Basic
-    @Column(name = "job_description")
+    @Column(name = "job_description", nullable = true, length = 255)
     private String jobDescription;
     @Basic
-    @Column(name = "begin_date")
+    @Column(name = "begin_date", nullable = true)
     private Date beginDate;
     @Basic
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = true)
     private Date endDate;
     @Basic
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = true, insertable=false, updatable=false)
     private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User userByUserId;
 
     public int getId() {
         return id;
@@ -79,28 +83,20 @@ public class EmploymentHistory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         EmploymentHistory that = (EmploymentHistory) o;
-
-        if (id != that.id) return false;
-        if (header != null ? !header.equals(that.header) : that.header != null) return false;
-        if (jobDescription != null ? !jobDescription.equals(that.jobDescription) : that.jobDescription != null)
-            return false;
-        if (beginDate != null ? !beginDate.equals(that.beginDate) : that.beginDate != null) return false;
-        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-
-        return true;
+        return id == that.id && Objects.equals(header, that.header) && Objects.equals(jobDescription, that.jobDescription) && Objects.equals(beginDate, that.beginDate) && Objects.equals(endDate, that.endDate) && Objects.equals(userId, that.userId);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (header != null ? header.hashCode() : 0);
-        result = 31 * result + (jobDescription != null ? jobDescription.hashCode() : 0);
-        result = 31 * result + (beginDate != null ? beginDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        return result;
+        return Objects.hash(id, header, jobDescription, beginDate, endDate, userId);
+    }
+
+    public User getUserByUserId() {
+        return userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
     }
 }

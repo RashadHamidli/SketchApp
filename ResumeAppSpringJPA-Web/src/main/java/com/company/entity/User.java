@@ -3,43 +3,55 @@ package com.company.entity;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
     @Basic
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false, length = 255)
     private String surname;
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = true, length = 255)
     private String email;
     @Basic
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = true, length = 255)
     private String phone;
     @Basic
-    @Column(name = "address")
+    @Column(name = "address", nullable = true, length = 255)
     private String address;
     @Basic
-    @Column(name = "profile_description")
+    @Column(name = "profile_description", nullable = true, length = 255)
     private String profileDescription;
     @Basic
-    @Column(name = "birthdate")
+    @Column(name = "birthdate", nullable = true)
     private Date birthdate;
     @Basic
-    @Column(name = "nationality_id")
+    @Column(name = "nationality_id", nullable = true, insertable=false, updatable=false)
     private Integer nationalityId;
     @Basic
-    @Column(name = "birthplace_id")
+    @Column(name = "birthplace_id", nullable = true, insertable=false, updatable=false)
     private Integer birthplaceId;
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
+    @OneToMany(mappedBy = "userByUserId")
+    private Collection<EmploymentHistory> employmentHistoriesById;
+    @ManyToOne
+    @JoinColumn(name = "nationality_id", referencedColumnName = "id")
+    private Country countryByNationalityId;
+    @ManyToOne
+    @JoinColumn(name = "birthplace_id", referencedColumnName = "id")
+    private Country countryByBirthplaceId;
+    @OneToMany(mappedBy = "userByUserId")
+    private Collection<UserSkill> userSkillsById;
 
     public int getId() {
         return id;
@@ -133,56 +145,44 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
-        if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
-        if (address != null ? !address.equals(user.address) : user.address != null) return false;
-        if (profileDescription != null ? !profileDescription.equals(user.profileDescription) : user.profileDescription != null)
-            return false;
-        if (birthdate != null ? !birthdate.equals(user.birthdate) : user.birthdate != null) return false;
-        if (nationalityId != null ? !nationalityId.equals(user.nationalityId) : user.nationalityId != null)
-            return false;
-        if (birthplaceId != null ? !birthplaceId.equals(user.birthplaceId) : user.birthplaceId != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-
-        return true;
+        return id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(phone, user.phone) && Objects.equals(address, user.address) && Objects.equals(profileDescription, user.profileDescription) && Objects.equals(birthdate, user.birthdate) && Objects.equals(nationalityId, user.nationalityId) && Objects.equals(birthplaceId, user.birthplaceId) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (profileDescription != null ? profileDescription.hashCode() : 0);
-        result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
-        result = 31 * result + (nationalityId != null ? nationalityId.hashCode() : 0);
-        result = 31 * result + (birthplaceId != null ? birthplaceId.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return Objects.hash(id, name, surname, email, phone, address, profileDescription, birthdate, nationalityId, birthplaceId, password);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", profileDescription='" + profileDescription + '\'' +
-                ", birthdate=" + birthdate +
-                ", nationalityId=" + nationalityId +
-                ", birthplaceId=" + birthplaceId +
-                ", password='" + password + '\'' +
-                '}';
+    public Collection<EmploymentHistory> getEmploymentHistoriesById() {
+        return employmentHistoriesById;
+    }
+
+    public void setEmploymentHistoriesById(Collection<EmploymentHistory> employmentHistoriesById) {
+        this.employmentHistoriesById = employmentHistoriesById;
+    }
+
+    public Country getCountryByNationalityId() {
+        return countryByNationalityId;
+    }
+
+    public void setCountryByNationalityId(Country countryByNationalityId) {
+        this.countryByNationalityId = countryByNationalityId;
+    }
+
+    public Country getCountryByBirthplaceId() {
+        return countryByBirthplaceId;
+    }
+
+    public void setCountryByBirthplaceId(Country countryByBirthplaceId) {
+        this.countryByBirthplaceId = countryByBirthplaceId;
+    }
+
+    public Collection<UserSkill> getUserSkillsById() {
+        return userSkillsById;
+    }
+
+    public void setUserSkillsById(Collection<UserSkill> userSkillsById) {
+        this.userSkillsById = userSkillsById;
     }
 }

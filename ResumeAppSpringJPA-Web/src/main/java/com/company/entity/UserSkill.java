@@ -2,22 +2,30 @@ package com.company.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "user_skill", schema = "resumesecond", catalog = "")
 public class UserSkill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = true, insertable=false, updatable=false)
     private Integer userId;
     @Basic
-    @Column(name = "skill_id")
+    @Column(name = "skill_id", nullable = true, insertable=false, updatable=false)
     private Integer skillId;
     @Basic
-    @Column(name = "power")
+    @Column(name = "power", nullable = true)
     private Integer power;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User userByUserId;
+    @ManyToOne
+    @JoinColumn(name = "skill_id", referencedColumnName = "id")
+    private Skill skillBySkillId;
 
     public int getId() {
         return id;
@@ -55,23 +63,28 @@ public class UserSkill {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         UserSkill userSkill = (UserSkill) o;
-
-        if (id != userSkill.id) return false;
-        if (userId != null ? !userId.equals(userSkill.userId) : userSkill.userId != null) return false;
-        if (skillId != null ? !skillId.equals(userSkill.skillId) : userSkill.skillId != null) return false;
-        if (power != null ? !power.equals(userSkill.power) : userSkill.power != null) return false;
-
-        return true;
+        return id == userSkill.id && Objects.equals(userId, userSkill.userId) && Objects.equals(skillId, userSkill.skillId) && Objects.equals(power, userSkill.power);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (skillId != null ? skillId.hashCode() : 0);
-        result = 31 * result + (power != null ? power.hashCode() : 0);
-        return result;
+        return Objects.hash(id, userId, skillId, power);
+    }
+
+    public User getUserByUserId() {
+        return userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
+    }
+
+    public Skill getSkillBySkillId() {
+        return skillBySkillId;
+    }
+
+    public void setSkillBySkillId(Skill skillBySkillId) {
+        this.skillBySkillId = skillBySkillId;
     }
 }
