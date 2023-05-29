@@ -44,7 +44,7 @@ public class UserController {
 //        return "users";
 //    }
     @GetMapping("/users")
-    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
     public ModelAndView  index(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "surname", required = false) String surname,
@@ -80,6 +80,10 @@ public class UserController {
 
         mv.addObject("list", list);
         return mv;
+    }
+    @GetMapping("/test")
+    public String index(){
+        return "her kese aciqdir";
     }
 
     @ModelAttribute("user")
