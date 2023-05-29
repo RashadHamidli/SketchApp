@@ -6,6 +6,7 @@ import com.company.entity.User;
 import com.company.service.inter.UserServiceinter;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class UserServiceImpl implements UserServiceinter {
 
     @Autowired
     private UserDAOInter userDao;
+
 
     @Override
     public List<User> getAll(String name, String surname, String email, String phone, String address, Date birthdate) {
@@ -48,8 +50,11 @@ public class UserServiceImpl implements UserServiceinter {
         return userDao.removeUser(id);
     }
 
+    private static BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+
     @Override
     public boolean addUser(User u) {
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         return userDao.addUser(u);
     }
 
