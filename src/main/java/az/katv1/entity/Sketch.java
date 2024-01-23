@@ -1,6 +1,7 @@
 package az.katv1.entity;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class Sketch {
     private String address;
     private int saygac;
     private double coefficient;
+//    @Temporal(TemporalType.DATE)
     private java.util.Date date;
 
     @ManyToMany
