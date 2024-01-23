@@ -14,10 +14,12 @@
         <form action="/home" method="get">
             <button type="submit" class="btn btn-primary">Return Home</button>
         </form>
+        <br>
+
         <form action="/sketch/add" th:action="@{/sketch/add}" method="post">
             <div class="mb-3">
                 <label for="address" class="form-label">Address:</label>
-                <input type="text" th:field="${sketchRequest.address}" class="form-control" required>
+                <input placeholder="Baku, Yasamal.." type="text" th:field="${sketchRequest.address}" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="saygac" class="form-label">Saygac:</label>

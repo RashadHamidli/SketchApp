@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/sketch")
 public class ScetchViewController {
-    private final SketchService sketchService;  // SketchService'nin bağımlılığını enjekte ettiğinizden emin olun
+    private final SketchService sketchService;
 
     public ScetchViewController(SketchService sketchService) {
         this.sketchService = sketchService;
@@ -32,16 +32,17 @@ public class ScetchViewController {
         model.addAttribute("allSketches", sketch);
         return "view-all-sketch";
     }
-//    @GetMapping("/view/{id}")
-//    public String viewSketchById(@PathVariable Integer id, Model model) {
-//        Sketch sketch = sketchService.getSketchById(id);
-//
-//        if (sketch == null) {
-//            // Handle the case where the sketch is not found
-//            return "redirect:/home";  // Örnek bir yönlendirme, kendi proje mantığınıza uygun olarak değiştirin
-//        }
-//
-//        model.addAttribute("sketch", sketch);
-//        return "view-sketch";
-//    }
+
+    @GetMapping("/view/{id}")
+    public String viewSketchById(@PathVariable Integer id, Model model) {
+        Sketch sketch = sketchService.getSketchById(id);
+
+        if (sketch == null) {
+            // Handle the case where the sketch is not found
+            return "redirect:/home";  // Örnek bir yönlendirme, kendi proje mantığınıza uygun olarak değiştirin
+        }
+
+        model.addAttribute("sketch", sketch);
+        return "view-sketch";
+    }
 }
