@@ -12,7 +12,7 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @ManyToMany(mappedBy = "equipments")
-    private List<Eskiz> eskizList;
 
+    @ManyToMany(mappedBy = "equipments")
+    private List<Sketch> sketchList;
 }

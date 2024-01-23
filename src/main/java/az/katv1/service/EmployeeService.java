@@ -5,6 +5,8 @@ import az.katv1.entity.Employee;
 import az.katv1.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
@@ -18,5 +20,9 @@ public class EmployeeService {
         employee.setName(employeeRequest.getName());
         employee.setSurname(employeeRequest.getSurname());
         employeeRepository.save(employee);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
     }
 }

@@ -4,14 +4,14 @@ import az.katv1.entity.Employee;
 import az.katv1.entity.Equipment;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Data
-public class EskizRequest {
+public class SketchRequest {
     private String address;
     private int saygac;
-    private int coefficient;
+    private double coefficient;
     private Date date;
     private List<Employee> employeeList;
     private List<Equipment> equipmentList;

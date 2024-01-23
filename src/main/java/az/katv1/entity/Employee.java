@@ -13,6 +13,7 @@ public class Employee {
     private int id;
     private String name;
     private String surname;
+
     @ManyToMany(mappedBy = "employees")
-    private List<Eskiz> eskizList;
+    private List<Sketch> sketchList;
 }
