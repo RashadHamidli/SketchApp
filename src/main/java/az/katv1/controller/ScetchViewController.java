@@ -29,8 +29,8 @@ public class ScetchViewController {
             return "redirect:/home";  // Örnek bir yönlendirme, kendi proje mantığınıza uygun olarak değiştirin
         }
 
-        model.addAttribute("sketch", sketch);
-        return "view-sketch";
+        model.addAttribute("allSketches", sketch);
+        return "view-all-sketch";
     }
 //    @GetMapping("/view/{id}")
 //    public String viewSketchById(@PathVariable Integer id, Model model) {
