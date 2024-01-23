@@ -21,12 +21,12 @@ public class Sketch {
             name = "sketch_equipment",
             joinColumns = @JoinColumn(name = "sketch_id"),
             inverseJoinColumns = @JoinColumn(name = "equipment_id"))
-    private List<Equipment> equipments;
+    private List<Equipment> equipmentList;
 
     @ManyToMany
     @JoinTable(
             name = "sketch_employee",
             joinColumns = @JoinColumn(name = "sketch_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
-    private List<Employee> employees;
+    private List<Employee> employeeList;
 }

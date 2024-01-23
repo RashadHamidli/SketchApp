@@ -5,6 +5,8 @@ import az.katv1.entity.Sketch;
 import az.katv1.repository.SketchRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SketchService {
     private final SketchRepository sketchRepository;
@@ -19,8 +21,16 @@ public class SketchService {
         sketch.setSaygac(request.getSaygac());
         sketch.setCoefficient(request.getCoefficient());
         sketch.setDate(request.getDate());
-        sketch.setEmployees(request.getEmployeeList());
-        sketch.setEquipments(request.getEquipmentList());
+        sketch.setEmployeeList(request.getEmployeeList());
+        sketch.setEquipmentList(request.getEquipmentList());
         sketchRepository.save(sketch);
+    }
+
+    public Sketch getSketchById(Integer id) {
+        return sketchRepository.findById(id).orElse(null);
+    }
+
+    public List<Sketch> getAllSketch() {
+        return sketchRepository.findAll();
     }
 }

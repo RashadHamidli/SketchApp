@@ -11,6 +11,9 @@
 <div class="card">
     <div class="card-body">
         <h2 class="card-title">Adding sketch</h2>
+        <form action="/home" method="get">
+            <button type="submit" class="btn btn-primary">Return Home</button>
+        </form>
         <form action="/sketch/add" th:action="@{/sketch/add}" method="post">
             <div class="mb-3">
                 <label for="address" class="form-label">Address:</label>
@@ -54,6 +57,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Add sketch</button>
         </form>
+
     </div>
 </div>
 <!-- Bootstrap JS and Popper.js (Optional) -->

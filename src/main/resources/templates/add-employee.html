@@ -11,6 +11,9 @@
 <div class="card">
     <div class="card-body">
         <h2 class="card-title">Add Employee</h2>
+        <form action="/home" method="get">
+            <button type="submit" class="btn btn-primary">Return Home</button>
+        </form>
         <form action="/employee/add" th:action="@{/employee/add}" method="post">
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name:</label>

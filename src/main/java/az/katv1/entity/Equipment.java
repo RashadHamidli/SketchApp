@@ -13,6 +13,6 @@ public class Equipment {
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "equipments")
+    @ManyToMany(mappedBy = "equipmentList")
     private List<Sketch> sketchList;
 }

@@ -14,6 +14,6 @@ public class Employee {
     private String name;
     private String surname;
 
-    @ManyToMany(mappedBy = "employees")
+    @ManyToMany(mappedBy = "employeeList")
     private List<Sketch> sketchList;
 }
