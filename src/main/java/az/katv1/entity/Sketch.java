@@ -1,9 +1,10 @@
 package az.katv1.entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,8 @@ public class Sketch {
     private String address;
     private int saygac;
     private double coefficient;
-//    @Temporal(TemporalType.DATE)
-    private java.util.Date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime date;
 
     @ManyToMany
     @JoinTable(
