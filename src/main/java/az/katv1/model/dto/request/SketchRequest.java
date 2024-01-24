@@ -1,7 +1,7 @@
 package az.katv1.model.dto.request;
 
-import az.katv1.dao.entity.Employee;
-import az.katv1.dao.entity.Equipment;
+import az.katv1.model.dao.entity.Employee;
+import az.katv1.model.dao.entity.Equipment;
 import lombok.Data;
 
 import java.time.LocalDateTime;

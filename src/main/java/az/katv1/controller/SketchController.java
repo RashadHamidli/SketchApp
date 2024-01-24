@@ -1,8 +1,8 @@
 package az.katv1.controller;
 
 import az.katv1.model.dto.request.SketchRequest;
-import az.katv1.dao.entity.Employee;
-import az.katv1.dao.entity.Equipment;
+import az.katv1.model.dao.entity.Employee;
+import az.katv1.model.dao.entity.Equipment;
 import az.katv1.service.EmployeeService;
 import az.katv1.service.EquipmentService;
 import az.katv1.service.SketchService;

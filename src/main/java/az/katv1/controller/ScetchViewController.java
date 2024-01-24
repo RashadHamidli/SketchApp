@@ -1,6 +1,6 @@
 package az.katv1.controller;
 
-import az.katv1.dao.entity.Sketch;
+import az.katv1.model.dao.entity.Sketch;
 import az.katv1.service.SketchService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

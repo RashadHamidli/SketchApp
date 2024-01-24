@@ -1,4 +1,4 @@
-package az.katv1.dao.entity;
+package az.katv1.model.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
