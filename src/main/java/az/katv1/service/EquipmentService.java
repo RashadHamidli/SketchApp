@@ -1,6 +1,6 @@
 package az.katv1.service;
 
-import az.katv1.dto.request.EquipmentRequest;
+import az.katv1.model.dto.request.EquipmentRequest;
 import az.katv1.dao.entity.Equipment;
 import az.katv1.dao.repository.EquipmentRepository;
 import org.springframework.stereotype.Service;

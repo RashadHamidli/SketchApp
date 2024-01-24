@@ -1,4 +1,4 @@
-package az.katv1.dto.request;
+package az.katv1.model.dto.request;
 
 import lombok.Data;
 

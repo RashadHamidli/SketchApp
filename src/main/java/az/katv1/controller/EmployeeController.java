@@ -1,6 +1,6 @@
 package az.katv1.controller;
 
-import az.katv1.dto.request.EmployeeRequest;
+import az.katv1.model.dto.request.EmployeeRequest;
 import az.katv1.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
