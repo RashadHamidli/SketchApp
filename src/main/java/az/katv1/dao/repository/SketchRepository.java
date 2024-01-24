@@ -1,4 +1,4 @@
-package az.katv1.repository;
+package az.katv1.dao.repository;
 
 
 import az.katv1.entity.Sketch;
