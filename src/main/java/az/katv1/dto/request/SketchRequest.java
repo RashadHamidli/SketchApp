@@ -1,4 +1,4 @@
-package az.katv1.dto;
+package az.katv1.dto.request;
 
 import az.katv1.entity.Employee;
 import az.katv1.entity.Equipment;

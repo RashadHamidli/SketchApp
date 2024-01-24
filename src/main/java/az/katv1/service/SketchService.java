@@ -1,6 +1,6 @@
 package az.katv1.service;
 
-import az.katv1.dto.SketchRequest;
+import az.katv1.dto.request.SketchRequest;
 import az.katv1.entity.Sketch;
 import az.katv1.repository.SketchRepository;
 import org.springframework.stereotype.Service;
