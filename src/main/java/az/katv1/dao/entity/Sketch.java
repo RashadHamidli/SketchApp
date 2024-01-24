@@ -1,9 +1,8 @@
-package az.katv1.entity;
+package az.katv1.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

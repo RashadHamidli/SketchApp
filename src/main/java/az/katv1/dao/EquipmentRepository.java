@@ -1,6 +1,6 @@
-package az.katv1.dao.repository;
+package az.katv1.dao;
 
-import az.katv1.entity.Equipment;
+import az.katv1.dao.entity.Equipment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

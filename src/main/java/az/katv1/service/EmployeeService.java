@@ -1,8 +1,8 @@
 package az.katv1.service;
 
 import az.katv1.dto.request.EmployeeRequest;
-import az.katv1.entity.Employee;
-import az.katv1.dao.repository.EmployeeRepository;
+import az.katv1.dao.entity.Employee;
+import az.katv1.dao.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
